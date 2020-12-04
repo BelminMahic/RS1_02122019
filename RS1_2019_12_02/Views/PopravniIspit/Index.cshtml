@@ -1,0 +1,28 @@
+﻿@model RS1_2019_12_02.ViewModels.PopravniIspitIndexVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Školska godina</th>
+                <th>Škola</th>
+                <th>Odjeljenje</th>
+                <th>Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.rows)
+            {
+            <tr>
+                <td>@item.SkolskaGodinaNaziv</td>
+                <td>@item.SkolaNaziv</td>
+                <td>@item.OdjeljenjeOznaka</td>
+                <td>
+                    <a asp-action="Display" asp-controller="PopravniIspit" asp-route-id="@item.OdjeljenjeId">Odaberi</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>

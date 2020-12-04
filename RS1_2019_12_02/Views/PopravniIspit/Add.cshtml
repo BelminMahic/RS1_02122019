@@ -1,0 +1,38 @@
+﻿@model RS1_2019_12_02.ViewModels.PopravniIspitDodajVM
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h2>Dodavanje popravnog ispita</h2>
+
+<form asp-action="Save" asp-controller="PopravniIspit">
+    <input asp-for="@Model.SkolaId" hidden />
+    <input asp-for="@Model.SkolskaGodId" hidden />
+    <input asp-for="@Model.OdjeljenjeId" hidden />
+
+
+    <div class="form-group">
+        <label asp-for="@Model.PredmetId">Predmet: </label>
+        <select asp-for="@Model.PredmetId" asp-items="@Model.predmeti" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.DatumIspita">Datum ispita: </label>
+        <input asp-for="@Model.DatumIspita" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.SkolaNaziv">Skola: </label>
+        <input asp-for="@Model.SkolaNaziv" class="form-control"  readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.SkolskaNaziv">Skolska godina: </label>
+        <input asp-for="@Model.SkolskaNaziv" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.OdjeljenjeNaziv">Odjeljenje: </label>
+        <input asp-for="@Model.OdjeljenjeNaziv" class="form-control" readonly />
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Snimi</button>
+</form>

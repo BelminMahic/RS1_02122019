@@ -1,0 +1,64 @@
+﻿@model RS1_2019_12_02.ViewModels.AjaxStavkeIndexVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Učenik</th>
+            <th>Odjeljenje</th>
+            <th>
+                Broj u
+                dnevniku
+            </th>
+            <th>
+                Pristupio
+                ispitu
+            </th>
+            <th>
+                Rezultat maturskog
+                (max 100)
+            </th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.rows)
+        {
+        <tr>
+            <td>@item.UcenikImePrezime</td>
+            <td>@item.OdjeljenjeOznaka</td>
+            <td>@item.BrojUDnevniku</td>
+            @if (item.IsPristupio == true)
+            {
+                <td>
+                    <a class="btn btn-success">DA</a>
+                </td>
+                <td>@item.Bodovi</td>
+                <td>
+                    <a asp-action="SaveEdit" asp-controller="AjaxStavke" asp-route-id="@item.PopravniIspitStavkaId">Uredi</a>
+                </td>
+            }
+            else if (item.IsPristupio == false)
+            {
+                <td>
+                    <a class="btn btn-danger">NE</a>
+                </td>
+                <td>x</td>
+                <td>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <p style="color:red">Nema pravo na popravni</p>
+                </td>
+                <td>0</td>
+                <td>
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>

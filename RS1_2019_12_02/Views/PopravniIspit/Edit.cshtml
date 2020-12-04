@@ -1,0 +1,36 @@
+﻿@model RS1_2019_12_02.ViewModels.PopravniIspitUrediVM
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Uredjivanje popravnog ispita</h2>
+
+<div class="row">
+
+    <div class="col-5">
+        Predmet: @Model.PredmetNaziv
+    </div>
+    <div class="col-5">
+        Datum ispita: @Model.DatumIspita
+    </div>
+    <div class="col-5">
+        Skola: @Model.SkolaNaziv
+    </div>
+    <div class="col-5">
+        Skolska godina: @Model.SkolskaGodNaziv
+    </div>
+    <div class="col-5">
+        Odjeljenje: <input asp-for="@Model.OdjeljenjeNaziv" />
+    </div>
+</div>
+<div id="ajaxDiv">
+
+</div>
+
+<script>
+
+    $.get("/AjaxStavke/Index?id=@Model.PopravniIspitId", function (result) {
+
+        $("#ajaxDiv").html(result);
+    });
+</script>
